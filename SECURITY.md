@@ -1,14 +1,22 @@
 # Security Policy
 
-PgBeam sits between AI agents and production databases, so a flaw in it is a
-flaw in somebody's data boundary. We would rather hear about one from you than
-from an incident.
+This policy covers everything Sfera Arc publishes. Today that is PgBeam, which
+sits between AI agents and production databases, so a flaw in it is a flaw in
+somebody's data boundary. We would rather hear about one from you than from an
+incident.
 
 ## Reporting a vulnerability
 
-Email **security@pgbeam.com**. If the repository has GitHub private
-vulnerability reporting enabled, the Security tab works too and is preferred,
-because it keeps the whole exchange in one place.
+Send the report to the address for the product it affects:
+
+| Product | Where to send it    |
+| ------- | ------------------- |
+| PgBeam  | security@pgbeam.com |
+
+If the repository has GitHub private vulnerability reporting enabled, the
+Security tab works too and is preferred, because it keeps the whole exchange in
+one place. If you are not sure which product a finding belongs to, pick any
+address in that table and we will route it.
 
 Please do not open a public issue, pull request, or discussion for a suspected
 vulnerability, and please do not post it anywhere public until we have agreed a
@@ -45,7 +53,10 @@ find out after the work.
 
 ## Scope
 
-In scope:
+Every public repository in this organization is in scope, as is every service
+and package listed under a product below.
+
+### PgBeam
 
 - `pgbeam.com`, `api.pgbeam.com`, and the proxy endpoints under
   `proxy.pgbeam.app`.
@@ -56,16 +67,15 @@ In scope:
   column allowlists, row filters, PII masking, query budgets, the kill-switch,
   and the audit log. A construct that gets past any of those is exactly the
   class of bug we most want.
-- Anything in the public repositories in this organization.
 
-Out of scope:
+### Out of scope, whatever the product
 
 - Findings against our vendors rather than us. Report those to the vendor.
 - Missing security headers, cookie flags, or TLS configuration preferences with
   no demonstrated impact.
 - Volumetric denial of service, load testing, and traffic flooding.
 - Social engineering, phishing, or physical access against anyone connected
-  with the project.
+  with us.
 - Scanner output with no working proof of concept.
 - Reports that an unauthenticated endpoint returns data it is documented to
   return.
@@ -87,10 +97,10 @@ authorized, will not pursue or support legal action against you over it, and
 will say so to anyone who asks. If a third party takes action over research
 that stayed within this policy, tell us and we will make our position clear.
 
-If you are unsure whether something is in bounds, ask first at
-security@pgbeam.com.
+If you are unsure whether something is in bounds, ask first at the reporting
+address for the product.
 
 ## Where else this is written down
 
-The security practices behind this policy are described at
+PgBeam's security practices, which sit behind this policy, are described at
 <https://pgbeam.com/security>.

@@ -1,15 +1,19 @@
 # Support
 
-## Using PgBeam
+Sfera Arc has one product today, PgBeam. Where to go depends on what you need
+rather than which repository you landed on.
 
-Start with the documentation at <https://pgbeam.com/docs>. The
-[troubleshooting guide](https://pgbeam.com/docs/troubleshooting) and the
-[error code reference](https://pgbeam.com/docs/error-codes) cover most of what
-goes wrong in practice, including the policy rejections that look like database
-errors and are not.
+## Documentation and status
 
-If the service itself looks unhealthy, check <https://status.pgbeam.com> before
-anything else.
+| Product | Documentation                              | Status                                         |
+| ------- | ------------------------------------------ | ---------------------------------------------- |
+| PgBeam  | [pgbeam.com/docs](https://pgbeam.com/docs) | [status.pgbeam.com](https://status.pgbeam.com) |
+
+For PgBeam, the [troubleshooting guide](https://pgbeam.com/docs/troubleshooting)
+and the [error code reference](https://pgbeam.com/docs/error-codes) cover most
+of what goes wrong in practice, including the policy rejections that look like
+database errors and are not. If the service itself looks unhealthy, check the
+status page before anything else.
 
 ## Questions about the code
 
@@ -23,8 +27,12 @@ next month finds your issue instead of writing it again.
 
 ## Account, billing, and everything else
 
-Email **support@pgbeam.com** for anything tied to your account: billing,
+Email the address for the product for anything tied to your account: billing,
 plans, quotas, access, or data you would rather not paste into a public issue.
+
+| Product | Where to write     |
+| ------- | ------------------ |
+| PgBeam  | support@pgbeam.com |
 
 ## Security
 
@@ -34,5 +42,6 @@ Do not use issues or email support for a suspected vulnerability. Follow
 ## What we do not offer here
 
 There is no guaranteed response time on public issues. Support commitments
-attached to a paid plan are described at <https://pgbeam.com/pricing> and are
-handled over email, not on GitHub.
+attached to a paid plan are described on the product's pricing page
+(<https://pgbeam.com/pricing> for PgBeam) and are handled over email, not on
+GitHub.

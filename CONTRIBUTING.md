@@ -1,6 +1,7 @@
 # Contributing
 
-Thank you for wanting to help.
+Thank you for wanting to help. This applies to every repository Sfera Arc
+publishes. Today they all belong to one product, PgBeam.
 
 ## Where things live
 
@@ -56,7 +57,7 @@ it.
 
 ## Licensing
 
-These repositories are Apache-2.0. By contributing you agree that your
+Every repository here is Apache-2.0. By contributing you agree that your
 contribution is licensed under the same terms, as set out in section 5 of the
 licence. There is no separate contributor licence agreement to sign.
 

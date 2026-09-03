@@ -1,4 +1,9 @@
-# PgBeam
+# Sfera Arc
+
+Sfera Arc builds developer infrastructure. There is one product today, PgBeam,
+and every repository in this organization belongs to it.
+
+## PgBeam
 
 Safe Postgres access for AI agents.
 
