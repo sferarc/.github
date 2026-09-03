@@ -1,0 +1,18 @@
+# Blank issues stay enabled on purpose. A template is a prompt, not a gate, and
+# a report that does not fit either form is still worth having.
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/sferarc/.github/blob/main/SECURITY.md
+    about:
+      Do not open an issue. Email security@pgbeam.com, or use private
+      vulnerability reporting on the affected repository.
+  - name: Documentation
+    url: https://pgbeam.com/docs
+    about: Guides, the API and CLI reference, troubleshooting, and error codes.
+  - name: Service status
+    url: https://status.pgbeam.com
+    about: Check here first if PgBeam itself looks unhealthy.
+  - name: Account, billing, or private data
+    url: mailto:support@pgbeam.com
+    about: Anything you would rather not paste into a public issue.

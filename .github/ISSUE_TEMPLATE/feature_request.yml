@@ -1,0 +1,54 @@
+name: Feature request
+description: Something PgBeam cannot do that you need it to do.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do
+      description: |
+        Describe the situation, not the feature. What is the agent, the policy,
+        or the workflow you are trying to build, and where does it stop?
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What you do today instead
+      description: The workaround, if you have one, and what it costs you.
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like PgBeam to do
+      description:
+        A concrete shape helps, even a rough one. Configuration, a command, an
+        API call.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which surface
+      multiple: true
+      options:
+        - Policy enforcement
+        - Agent credentials
+        - MCP endpoint
+        - Audit log
+        - CLI
+        - TypeScript SDK
+        - Go SDK
+        - Terraform provider
+        - Crossplane provider
+        - Pulumi provider
+        - Documentation
+        - Agent skills
+        - Conformance vectors
+        - Something else
+    validations:
+      required: false

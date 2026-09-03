@@ -1,0 +1,78 @@
+name: Bug report
+description: Something behaves differently from what the documentation says.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report a suspected security vulnerability here. Email
+        security@pgbeam.com instead, or use private vulnerability reporting on
+        this repository.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description:
+        What you ran, and what came back. Paste the exact error, including any
+        code.
+      placeholder: |
+        Ran `pgbeam policy apply ./policy.yaml` and got:
+        Error: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+      description: If the documentation says otherwise, link the page.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce it
+      description: |
+        The smallest sequence that shows the problem. If it involves policy
+        enforcement, include the exact policy and the exact SQL: those two
+        decide the outcome, and a description of them usually does not.
+      placeholder: |
+        1. Create a policy with ...
+        2. Connect with the credential and run ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description:
+        The package, provider, or CLI version. `pgbeam --version` prints it for
+        the CLI.
+      placeholder: "pgbeam 0.4.2"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description:
+        Operating system, runtime version, and PostgreSQL version where
+        relevant.
+      placeholder: "macOS 15.4, Node 24.3, PostgreSQL 17.2"
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description:
+        Logs, captures, or a link to a reproduction. Redact real data before
+        pasting.
+    validations:
+      required: false
