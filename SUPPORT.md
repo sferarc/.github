@@ -1,6 +1,8 @@
 # Support
 
-Sferarc has one product today, PgBeam. Where to go depends on what you need rather than which repository you landed on.
+Sferarc publishes one product, PgBeam, and a set of standalone Go libraries. Where to go depends on what you need rather than which repository you landed on.
+
+If you landed here from a library, the short answer is that its repository is the place: open an issue there. The rest of this page is about the product.
 
 ## Documentation and status
 
@@ -23,6 +25,8 @@ Email the address for the product for anything tied to your account: billing, pl
 | Product | Where to write     |
 | ------- | ------------------ |
 | PgBeam  | support@pgbeam.com |
+
+The libraries have no account attached to them, so nothing here applies to those. Use the same address only if you need to send something you would rather not put in a public issue.
 
 ## Security
 

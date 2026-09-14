@@ -37,7 +37,8 @@ body:
       description: |
         The smallest sequence that shows the problem. If it involves policy
         enforcement, include the exact policy and the exact SQL: those two
-        decide the outcome, and a description of them usually does not.
+        decide the outcome, and a description of them usually does not. For a
+        library, include the exact input, byte for byte where it matters.
       placeholder: |
         1. Create a policy with ...
         2. Connect with the credential and run ...
@@ -50,8 +51,8 @@ body:
     attributes:
       label: Version
       description:
-        The package, provider, or CLI version. `pgbeam --version` prints it for
-        the CLI.
+        The package, module, provider, or CLI version. `pgbeam --version`
+        prints it for the CLI, and `go list -m` for a Go module.
       placeholder: "pgbeam 0.4.2"
     validations:
       required: true

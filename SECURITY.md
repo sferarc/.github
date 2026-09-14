@@ -1,16 +1,21 @@
 # Security Policy
 
-This policy covers everything Sferarc publishes. Today that is PgBeam, which sits between AI agents and production databases, so a flaw in it is a flaw in somebody's data boundary. We would rather hear about one from you than from an incident.
+This policy covers everything Sferarc publishes: PgBeam, and the standalone Go libraries.
+
+PgBeam sits between AI agents and production databases, so a flaw in it is a flaw in somebody's data boundary. Three of the libraries carry the same kind of weight in miniature. `promptscan` is a detection control, `auditchain` is an integrity control, and `pgscram` handles credential material. We would rather hear about any of it from you than from an incident.
 
 ## Reporting a vulnerability
 
-Send the report to the address for the product it affects:
+Send the report to the address for what it affects:
 
-| Product | Where to send it    |
-| ------- | ------------------- |
-| PgBeam  | security@pgbeam.com |
+| What it affects      | Where to send it    |
+| -------------------- | ------------------- |
+| PgBeam               | security@pgbeam.com |
+| Any of the libraries | security@pgbeam.com |
 
-If the repository has GitHub private vulnerability reporting enabled, the Security tab works too and is preferred, because it keeps the whole exchange in one place. If you are not sure which product a finding belongs to, pick any address in that table and we will route it.
+Both rows are the same mailbox today. The table has two rows because the routing is by what you found rather than by where you happened to find it, and because that stays true when the table grows.
+
+GitHub private vulnerability reporting is enabled on every repository here, so the Security tab works and is preferred, because it keeps the whole exchange in one place. If you are not sure which row a finding belongs to, pick either and we will route it.
 
 Please do not open a public issue, pull request, or discussion for a suspected vulnerability, and please do not post it anywhere public until we have agreed a disclosure date with you.
 
@@ -36,7 +41,7 @@ We do not run a paid bug bounty. Saying so up front is fairer than letting you f
 
 ## Scope
 
-Every public repository in this organization is in scope, as is every service and package listed under a product below.
+Every public repository in this organization is in scope, as is every service and package listed below.
 
 ### PgBeam
 
@@ -44,6 +49,15 @@ Every public repository in this organization is in scope, as is every service an
 - Published packages: the TypeScript SDK, the Go SDK, the CLI, and the OpenAPI package.
 - The Terraform, Crossplane, and Pulumi providers.
 - The agent gateway and its policy enforcement: read-only mode, table and column allowlists, row filters, PII masking, query budgets, the kill-switch, and the audit log. A construct that gets past any of those is exactly the class of bug we most want.
+
+### Libraries
+
+Each one is a small package with a narrow job, so the interesting findings are narrow too:
+
+- `promptscan`: an input carrying a known technique that the structural layer passes, or a false positive shape common enough that an operator would switch the check off. Both defeat it, one loudly and one quietly.
+- `auditchain`: any tampering that still verifies, and any well formed chain that fails to verify when it should not. The published threat model is an adversary who can write to the log store but cannot reach the keys.
+- `pgscram`: a verifier PostgreSQL accepts that this rejects, or the reverse, and anything touching the derived key material.
+- `schemadigest`: disclosure of a table or column the caller was not meant to see.
 
 ### Out of scope, whatever the product
 
