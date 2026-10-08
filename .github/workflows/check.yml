@@ -26,6 +26,14 @@ jobs:
             echo "::error::Use a comma, colon, semicolon or two sentences instead of an em or en dash."
             exit 1
           fi
+      # The company is described as a maker of software products; a product's own entry may name its stack.
+      - name: Company intro stays product neutral
+        run: |
+          intro=$(awk 'NR>1 && /^## /{exit} NR>1' profile/README.md)
+          if echo "$intro" | grep -niE 'postgres|database'; then
+            echo "::error::Describe sferarc as a company that builds software products, not around one technology."
+            exit 1
+          fi
       # GitHub silently drops a contact link whose url is not http(s), with no error anywhere.
       - name: Contact links use https
         run: |

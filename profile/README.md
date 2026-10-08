@@ -1,6 +1,6 @@
 # sferarc
 
-sferarc builds Postgres tools for developers and a few products for everyone else. Each product has its own site; the open source libraries below are released on their own and need nothing else from this organization.
+sferarc builds software products. Each product has its own site, and the open source libraries below are released on their own and need nothing else from this organization.
 
 [sferarc.com](https://sferarc.com) · [Contributing](https://github.com/sferarc/.github/blob/main/CONTRIBUTING.md) · [Security](https://github.com/sferarc/.github/blob/main/SECURITY.md) · [Support](https://github.com/sferarc/.github/blob/main/SUPPORT.md)
 
@@ -8,22 +8,11 @@ sferarc builds Postgres tools for developers and a few products for everyone els
 
 | Product | What it does | Status |
 | --- | --- | --- |
-| [PgBeam](https://pgbeam.com) | A Postgres proxy that gives AI agents scoped credentials and enforces policy in the wire protocol: read-only mode, table and column allowlists, row filters, PII masking, query budgets, a kill switch and a tamper-evident audit log. Works with any Postgres host. | Live |
-| pgseek | Full-text search inside Postgres, served from a native index with BM25 ranking. | In development |
-| [Nuclom](https://nuclom.com) | One knowledge hub over Slack, Notion, GitHub and meeting recordings that answers questions with sources. | Private beta |
-| [Photocall](https://photocall.sferadev.com) | A photo booth kiosk for weddings, parties and company events, with QR pickup and on-site printing. | Live |
-| [Aula](https://aula.sferarc.com) | A teaching site of their own for independent teachers and small schools. | Early access |
-| Seating | A seating planner for weddings and events. | Coming soon |
+| [PgBeam](https://pgbeam.com) | A Postgres proxy that gives AI agents scoped credentials and enforces policy in the wire protocol: read-only mode, table and column allowlists, row filters, PII masking, query budgets, a kill switch and a tamper-evident audit log. Works with any Postgres host. | Available |
+| [Nuclom](https://nuclom.com) | One knowledge hub over Slack, Notion, GitHub and meeting recordings that answers questions with sources. | Available |
+| Aula | A teaching site of their own for independent teachers and small schools. | Coming soon |
 
 ## Open source
-
-### Postgres
-
-| Repository | What it does | Install | License |
-| --- | --- | --- | --- |
-| [pgscram](https://github.com/sferarc/pgscram) | Produce and read PostgreSQL's stored SCRAM-SHA-256 verifier, so a password never has to reach the server. No dependencies. | `go get github.com/sferarc/pgscram` | Apache-2.0 |
-| [schemadigest](https://github.com/sferarc/schemadigest) | Read a PostgreSQL catalog and reduce it to a compact schema summary for a language model's context. | `go get github.com/sferarc/schemadigest` | Apache-2.0 |
-| [pgbeam-conformance](https://github.com/sferarc/pgbeam-conformance) | Language-neutral test vectors for wire-level Postgres policy enforcement: a policy, a statement and the expected decision. | Clone the repository | Apache-2.0 |
 
 ### AI and agents
 
@@ -33,6 +22,14 @@ sferarc builds Postgres tools for developers and a few products for everyone els
 | [peeksafe](https://github.com/sferarc/peeksafe) | Statistically valid gates for non-deterministic eval suites: stop a run early without losing error control. | Not on npm yet | Apache-2.0 |
 | [ai-gateway-proxy](https://github.com/sferarc/ai-gateway-proxy) | A proxy handler for the Vercel AI Gateway with request and response hooks and streaming, for Next.js, Hono and Express. | `npm install ai-gateway-proxy` | MIT |
 | [vscode-ai-gateway](https://github.com/sferarc/vscode-ai-gateway) | A VS Code extension that brings Vercel AI Gateway models to the editor's chat. | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=SferaDev.vscode-extension-vercel-ai) | MIT |
+
+### Databases
+
+| Repository | What it does | Install | License |
+| --- | --- | --- | --- |
+| [pgscram](https://github.com/sferarc/pgscram) | Produce and read PostgreSQL's stored SCRAM-SHA-256 verifier, so a password never has to reach the server. No dependencies. | `go get github.com/sferarc/pgscram` | Apache-2.0 |
+| [schemadigest](https://github.com/sferarc/schemadigest) | Read a PostgreSQL catalog and reduce it to a compact schema summary for a language model's context. | `go get github.com/sferarc/schemadigest` | Apache-2.0 |
+| [pgbeam-conformance](https://github.com/sferarc/pgbeam-conformance) | Language-neutral test vectors for wire-level Postgres policy enforcement: a policy, a statement and the expected decision. | Clone the repository | Apache-2.0 |
 
 ### Integrity
 
