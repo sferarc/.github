@@ -1,73 +1,72 @@
-# Sferarc
+# sferarc
 
-Sferarc builds developer infrastructure for PostgreSQL and for the AI agents that talk to it. Several separate projects live here. PgBeam is the largest, and it is not the whole of them: alongside it are standalone Go libraries and a language-neutral conformance corpus, each released on its own and usable with nothing else from this organization installed.
+sferarc builds Postgres tools for developers and a few products for everyone else. Each product has its own site; the open source libraries below are released on their own and need nothing else from this organization.
 
-Everything published here is Apache-2.0. Issues and pull requests are welcome on all of it — see [CONTRIBUTING.md](https://github.com/sferarc/.github/blob/main/CONTRIBUTING.md), and [SECURITY.md](https://github.com/sferarc/.github/blob/main/SECURITY.md) for reporting a vulnerability privately rather than in a public issue.
+[sferarc.com](https://sferarc.com) · [Contributing](https://github.com/sferarc/.github/blob/main/CONTRIBUTING.md) · [Security](https://github.com/sferarc/.github/blob/main/SECURITY.md) · [Support](https://github.com/sferarc/.github/blob/main/SUPPORT.md)
 
-## Standalone Go libraries
+## Products
 
-Each solves one problem, needs nothing else from this organization, and is versioned and released independently. They were written while building PgBeam, which is the reason they exist and not the limit of where they are useful.
+| Product | What it does | Status |
+| --- | --- | --- |
+| [PgBeam](https://pgbeam.com) | A Postgres proxy that gives AI agents scoped credentials and enforces policy in the wire protocol: read-only mode, table and column allowlists, row filters, PII masking, query budgets, a kill switch and a tamper-evident audit log. Works with any Postgres host. | Live |
+| pgseek | Full-text search inside Postgres, served from a native index with BM25 ranking. | In development |
+| [Nuclom](https://nuclom.com) | One knowledge hub over Slack, Notion, GitHub and meeting recordings that answers questions with sources. | Live |
+| [Photocall](https://photocall.sferadev.com) | A photo booth kiosk for weddings, parties and company events, with QR pickup and on-site printing. | Live |
+| [Aula](https://aula.sferarc.com) | A teaching site of their own for independent teachers and small schools. | Early access |
+| Seating | A seating planner for weddings and events. | Coming soon |
 
-### [pgscram](https://github.com/sferarc/pgscram)
+## Open source
 
-```
-go get github.com/sferarc/pgscram
-```
+### Postgres
 
-Produce and read PostgreSQL's stored SCRAM-SHA-256 verifier — the `SCRAM-SHA-256$<iterations>:<salt>$<StoredKey>:<ServerKey>` string that lives in `pg_authid.rolpassword`. Derive one from a password and hand it straight to `CREATE ROLE … PASSWORD`, and the plaintext never reaches the server.
+| Repository | What it does | Install | License |
+| --- | --- | --- | --- |
+| [pgscram](https://github.com/sferarc/pgscram) | Produce and read PostgreSQL's stored SCRAM-SHA-256 verifier, so a password never has to reach the server. No dependencies. | `go get github.com/sferarc/pgscram` | Apache-2.0 |
+| [schemadigest](https://github.com/sferarc/schemadigest) | Read a PostgreSQL catalog and reduce it to a compact schema summary for a language model's context. | `go get github.com/sferarc/schemadigest` | Apache-2.0 |
+| [pgbeam-conformance](https://github.com/sferarc/pgbeam-conformance) | Language-neutral test vectors for wire-level Postgres policy enforcement: a policy, a statement and the expected decision. | Clone the repository | Apache-2.0 |
 
-For anyone who issues or holds Postgres credentials: a pooler, a wire-protocol proxy, a control plane that provisions roles, a migration moving credentials between systems. It is deliberately _not_ a SCRAM authentication implementation — it is the on-disk format only, and composes with [xdg-go/scram](https://github.com/xdg-go/scram) for the RFC 5802 exchange. No dependencies outside the standard library; needs Go 1.24 for `crypto/pbkdf2`.
+### AI and agents
 
-### [schemadigest](https://github.com/sferarc/schemadigest)
+| Repository | What it does | Install | License |
+| --- | --- | --- | --- |
+| [promptscan](https://github.com/sferarc/promptscan) | Detect hostile content aimed at a language model in untrusted text: bidi overrides, mixed-script words and Unicode tag-block smuggling. | `go get github.com/sferarc/promptscan` | Apache-2.0 |
+| [peeksafe](https://github.com/sferarc/peeksafe) | Statistically valid gates for non-deterministic eval suites: stop a run early without losing error control. | Not on npm yet | Apache-2.0 |
+| [ai-gateway-proxy](https://github.com/sferarc/ai-gateway-proxy) | A proxy handler for the Vercel AI Gateway with request and response hooks and streaming, for Next.js, Hono and Express. | `npm install ai-gateway-proxy` | MIT |
+| [vscode-ai-gateway](https://github.com/sferarc/vscode-ai-gateway) | A VS Code extension that brings Vercel AI Gateway models to the editor's chat. | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=SferaDev.vscode-extension-vercel-ai) | MIT |
 
-```
-go get github.com/sferarc/schemadigest
-```
+### Integrity
 
-Read a PostgreSQL catalog over a `pgx` connection and reduce it to a compact JSON summary sized for a language model's context: qualified table names, approximate row counts from `pg_class.reltuples`, comments, primary keys, foreign keys rendered as `col -> ref_table(ref_col)`, and per column only the name, the type and a masked flag.
+| Repository | What it does | Install | License |
+| --- | --- | --- | --- |
+| [auditchain](https://github.com/sferarc/auditchain) | Tamper-evident append-only logs for Go, with optional signed checkpoints. | `go get github.com/sferarc/auditchain` | Apache-2.0 |
 
-Two halves that are usable separately — `Read` is a plain catalog reader over four catalog queries, and `From` is the opinionated reduction. For text-to-SQL and agent tooling that would otherwise paste a `pg_dump --schema-only` into the prompt.
+### API clients and build tooling
 
-### [auditchain](https://github.com/sferarc/auditchain)
+| Repository | What it does | Install | License |
+| --- | --- | --- | --- |
+| [openapi](https://github.com/sferarc/openapi) | Type-safe TypeScript clients generated from public OpenAPI specs, listed at [openapi.sferadev.com](https://openapi.sferadev.com). Published: `vercel-api-js`, `cloudflare-api-js`, `netlify-api`, `keycloak-api`, `litellm-api`, `nuki-api-js`, `v0-api`, `zoom-api-js`. | `npm install vercel-api-js` (or any client above) | ISC, per package |
+| [rollup-plugin-import-cdn](https://github.com/sferarc/rollup-plugin-import-cdn) | A Rollup plugin that resolves bare imports to CDN URLs. | `npm install rollup-plugin-import-cdn` | ISC |
 
-```
-go get github.com/sferarc/auditchain
-```
+### PgBeam SDKs and tools
 
-Tamper-evident append-only logs. Records are hashed into a chain and keyed with an HMAC, so editing a record, deleting from the middle, rehashing the tail, or continuing past a truncation are all detectable by an offline walk of the stored rows.
+The PgBeam proxy and control plane are developed privately. These are the published parts, all Apache-2.0.
 
-The threat model is stated plainly in the README, including the one attack a hash chain cannot catch on its own — truncating the tail and stopping — and the `anchor` subpackage of Merkle checkpoints that closes it. The core package has no dependencies outside the standard library; `anchor` is the only thing that pulls in [transparency-dev](https://github.com/transparency-dev), and only if you import it.
+| Repository | What it is | Install |
+| --- | --- | --- |
+| [pgbeam-js](https://github.com/sferarc/pgbeam-js) | TypeScript SDK | `npm install pgbeam` |
+| [pgbeam-python](https://github.com/sferarc/pgbeam-python) | Python SDK, blocking and asyncio | `pip install pgbeam` |
+| [pgbeam-go](https://github.com/sferarc/pgbeam-go) | Go SDK | `go get go.pgbeam.com/sdk` |
+| [pgbeam-cli](https://github.com/sferarc/pgbeam-cli) | The `pgbeam` command line interface | `npm install -g @pgbeam/cli` |
+| [homebrew-pgbeam](https://github.com/sferarc/homebrew-pgbeam) | Homebrew tap for the CLI's native binary | `brew install sferarc/pgbeam/pgbeam` |
+| [pgbeam-openapi](https://github.com/sferarc/pgbeam-openapi) | The public OpenAPI contract | `npm install @pgbeam/openapi` |
+| [pgbeam-pulumi](https://github.com/sferarc/pgbeam-pulumi) | Pulumi provider | `npm install @pgbeam/pulumi` |
+| [terraform-provider-pgbeam](https://github.com/sferarc/terraform-provider-pgbeam) | Terraform provider | [GitHub releases](https://github.com/sferarc/terraform-provider-pgbeam/releases) |
+| [pgbeam-crossplane](https://github.com/sferarc/pgbeam-crossplane) | Crossplane provider, as Kubernetes custom resources | `ghcr.io/sferarc/provider-pgbeam` |
+| [pgbeam-agent](https://github.com/sferarc/pgbeam-agent) | Agent skills, the Agent Plugin and MCP manifests, and `AGENTS.md` instructions | Clone the repository |
+| [pgbeam-docs](https://github.com/sferarc/pgbeam-docs) | Source of [pgbeam.com/docs](https://pgbeam.com/docs) | |
 
-## Conformance vectors
+## Contributing and security
 
-### [pgbeam-conformance](https://github.com/sferarc/pgbeam-conformance)
+Issues and pull requests are welcome on every public repository. [CONTRIBUTING.md](https://github.com/sferarc/.github/blob/main/CONTRIBUTING.md) says where things live and what a good issue or pull request looks like.
 
-A language-neutral corpus of `(policy, statement) → expected decision` cases for wire-level Postgres policy enforcement: 44 cases across 10 profiles, covering read-only mode, statement allowlists, fail-closed input handling, relation allow/deny matching, column masking, row filters, lock-taking DDL, and bounded write counts.
-
-For anyone building a proxy, an MCP server, or a driver shim that stands between an agent and a database and wants "the policy is enforced" to be a checkable claim rather than a marketing one. The vectors are one implementation's answers, published as such and not as a standard — running them against something else and publishing the diff is the intended use.
-
-## PgBeam
-
-Safe Postgres access for AI agents — <https://pgbeam.com>
-
-PgBeam is a globally distributed PostgreSQL proxy that enforces policy in the wire protocol, so an agent gets a scoped credential instead of your database password. Read-only mode, table and column allowlists, row filters, PII masking, query budgets and a kill-switch are all decided before a statement reaches your database, and every decision lands in a tamper-evident audit log. Connection pooling and query caching come with it. It works with any Postgres host and needs no application changes: swap the connection string, or point the agent at the hosted MCP endpoint. Using it needs an account.
-
-- Documentation: <https://pgbeam.com/docs>
-- Quickstart: <https://pgbeam.com/docs/quickstart>
-- Security practices: <https://pgbeam.com/security>
-- Status: <https://status.pgbeam.com>
-
-The proxy and the control plane are developed privately. These are the published parts:
-
-| Repository | What it is |
-| --- | --- |
-| [`pgbeam-agent`](https://github.com/sferarc/pgbeam-agent) | Everything an agent needs to connect: installable agent skills, `AGENTS.md` operating instructions, and the Agent Plugin and MCP manifests |
-| [`pgbeam-cli`](https://github.com/sferarc/pgbeam-cli) | The `pgbeam` command line interface, on npm as `@pgbeam/cli` |
-| [`homebrew-pgbeam`](https://github.com/sferarc/homebrew-pgbeam) | Homebrew tap for the CLI's native binary: `brew install sferarc/pgbeam/pgbeam` |
-| [`pgbeam-js`](https://github.com/sferarc/pgbeam-js) | TypeScript SDK for the API, on npm as `pgbeam` |
-| [`pgbeam-go`](https://github.com/sferarc/pgbeam-go) | Go SDK for the API, imported as `go.pgbeam.com/sdk` |
-| [`pgbeam-openapi`](https://github.com/sferarc/pgbeam-openapi) | The public OpenAPI contract, bundled and separated, on npm as `@pgbeam/openapi` |
-| [`terraform-provider-pgbeam`](https://github.com/sferarc/terraform-provider-pgbeam) | Terraform provider |
-| [`pgbeam-pulumi`](https://github.com/sferarc/pgbeam-pulumi) | Pulumi provider |
-| [`pgbeam-crossplane`](https://github.com/sferarc/pgbeam-crossplane) | Crossplane provider, as Kubernetes custom resources |
-| [`pgbeam-docs`](https://github.com/sferarc/pgbeam-docs) | Source of <https://pgbeam.com/docs> |
+Report a suspected vulnerability privately, never in a public issue: use the Security tab of the affected repository, or follow [SECURITY.md](https://github.com/sferarc/.github/blob/main/SECURITY.md).

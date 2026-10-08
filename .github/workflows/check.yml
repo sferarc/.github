@@ -1,0 +1,40 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Links rot without a commit; a weekly run catches a renamed repository or a dead package page.
+    - cron: "17 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prose:
+    name: Prose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: No em or en dashes
+        run: |
+          if grep -rnP '\x{2014}|\x{2013}' --include='*.md' --include='*.yml' .; then
+            echo "::error::Use a comma, colon, semicolon or two sentences instead of an em or en dash."
+            exit 1
+          fi
+
+  links:
+    name: Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --no-progress --max-retries 3 --accept 200,429 './**/*.md' './.github/ISSUE_TEMPLATE/*.yml'
+          fail: true
