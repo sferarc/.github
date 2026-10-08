@@ -19,7 +19,6 @@ sferarc builds software products. Each product has its own site, and the open so
 | Repository | What it does | Install | License |
 | --- | --- | --- | --- |
 | [promptscan](https://github.com/sferarc/promptscan) | Detect hostile content aimed at a language model in untrusted text: bidi overrides, mixed-script words and Unicode tag-block smuggling. | `go get github.com/sferarc/promptscan` | Apache-2.0 |
-| [peeksafe](https://github.com/sferarc/peeksafe) | Statistically valid gates for non-deterministic eval suites: stop a run early without losing error control. | Not on npm yet | Apache-2.0 |
 | [ai-gateway-proxy](https://github.com/sferarc/ai-gateway-proxy) | A proxy handler for the Vercel AI Gateway with request and response hooks and streaming, for Next.js, Hono and Express. | `npm install ai-gateway-proxy` | MIT |
 | [vscode-ai-gateway](https://github.com/sferarc/vscode-ai-gateway) | A VS Code extension that brings Vercel AI Gateway models to the editor's chat. | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=SferaDev.vscode-extension-vercel-ai) | MIT |
 

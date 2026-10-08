@@ -58,7 +58,6 @@ Each one is a small package with a narrow job, so the interesting findings are n
 - `auditchain`: any tampering that still verifies, and any well formed chain that fails to verify when it should not. The published threat model is an adversary who can write to the log store but cannot reach the keys.
 - `pgscram`: a verifier PostgreSQL accepts that this rejects, or the reverse, and anything touching the derived key material.
 - `schemadigest`: disclosure of a table or column the caller was not meant to see.
-- `peeksafe`: a gate that reports a guarantee its statistics do not give, such as stopping early with a higher error rate than it promises.
 - `ai-gateway-proxy` and `vscode-ai-gateway`: anything that leaks or misroutes the AI Gateway key, or lets a request reach somewhere the caller did not configure.
 - `openapi` and `rollup-plugin-import-cdn`: generated or rewritten code that sends credentials or requests to a host other than the one configured.
 

@@ -12,7 +12,6 @@ Libraries and tools, each released on its own:
 | `schemadigest` | A compact PostgreSQL schema description written for a model |
 | `promptscan` | Detection of hostile content in text a language model will read |
 | `auditchain` | A tamper-evident append-only hash chain with signed checkpoints |
-| `peeksafe` | Statistically valid gates for non-deterministic eval suites |
 | `ai-gateway-proxy` | A proxy handler for the Vercel AI Gateway |
 | `vscode-ai-gateway` | A VS Code extension for Vercel AI Gateway models |
 | `openapi` | TypeScript API clients generated from public OpenAPI specs |
@@ -64,7 +63,7 @@ If you are planning something large, open an issue first and say what you have i
 
 ## Licensing
 
-Each repository carries its own licence: Apache-2.0 for PgBeam's SDKs and tooling, the Go libraries and peeksafe; MIT for `ai-gateway-proxy` and `vscode-ai-gateway`; ISC for `rollup-plugin-import-cdn` and for each client in `openapi`, as its `package.json` declares. By contributing you agree that your contribution is licensed under the licence of the repository you contribute to. There is no separate contributor licence agreement to sign.
+Each repository carries its own licence: Apache-2.0 for PgBeam's SDKs and tooling and the Go libraries; MIT for `ai-gateway-proxy` and `vscode-ai-gateway`; ISC for `rollup-plugin-import-cdn` and for each client in `openapi`, as its `package.json` declares. By contributing you agree that your contribution is licensed under the licence of the repository you contribute to. There is no separate contributor licence agreement to sign.
 
 ## Getting help
 
