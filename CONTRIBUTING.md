@@ -1,33 +1,39 @@
 # Contributing
 
-Thank you for wanting to help. This applies to every repository Sferarc publishes: the standalone Go libraries, and PgBeam's own SDKs and tooling.
+Thank you for wanting to help. This applies to every public repository sferarc publishes.
 
 ## Where things live
 
-Libraries, each solving one problem and depending on nothing else here:
+Libraries and tools, each released on its own:
 
 | Repository | What it holds |
 | --- | --- |
+| `pgscram` | PostgreSQL SCRAM-SHA-256 verifiers in the on-disk format |
+| `schemadigest` | A compact PostgreSQL schema description written for a model |
 | `promptscan` | Detection of hostile content in text a language model will read |
 | `auditchain` | A tamper-evident append-only hash chain with signed checkpoints |
-| `schemadigest` | A compact PostgreSQL schema description written for a model |
-| `pgscram` | PostgreSQL SCRAM-SHA-256 verifiers in the on-disk format |
+| `peeksafe` | Statistically valid gates for non-deterministic eval suites |
+| `ai-gateway-proxy` | A proxy handler for the Vercel AI Gateway |
+| `vscode-ai-gateway` | A VS Code extension for Vercel AI Gateway models |
+| `openapi` | TypeScript API clients generated from public OpenAPI specs |
+| `rollup-plugin-import-cdn` | A Rollup plugin that resolves bare imports to CDN URLs |
 
 PgBeam's SDKs and tooling:
 
-| Repository                  | What it holds                               |
-| --------------------------- | ------------------------------------------- |
-| `pgbeam-js`                 | The TypeScript SDK, published as `pgbeam`   |
-| `pgbeam-go`                 | The Go SDK, imported as `go.pgbeam.com/sdk` |
-| `pgbeam-cli`                | The `pgbeam` command line interface         |
-| `homebrew-pgbeam`           | The Homebrew tap for the CLI                |
-| `pgbeam-openapi`            | The public OpenAPI specification            |
-| `terraform-provider-pgbeam` | The Terraform provider                      |
-| `pgbeam-crossplane`         | The Crossplane provider                     |
-| `pgbeam-pulumi`             | The Pulumi provider                         |
-| `pgbeam-docs`               | The source of <https://pgbeam.com/docs>     |
-| `pgbeam-agent`              | Agent skills, plugin and MCP manifests      |
-| `pgbeam-conformance`        | Policy conformance vectors                  |
+| Repository | What it holds |
+| --- | --- |
+| `pgbeam-js` | The TypeScript SDK, published as `pgbeam` |
+| `pgbeam-python` | The Python SDK, published to PyPI as `pgbeam` |
+| `pgbeam-go` | The Go SDK, imported as `go.pgbeam.com/sdk` |
+| `pgbeam-cli` | The `pgbeam` command line interface |
+| `homebrew-pgbeam` | The Homebrew tap for the CLI |
+| `pgbeam-openapi` | The public OpenAPI specification |
+| `terraform-provider-pgbeam` | The Terraform provider |
+| `pgbeam-crossplane` | The Crossplane provider |
+| `pgbeam-pulumi` | The Pulumi provider |
+| `pgbeam-docs` | The source of <https://pgbeam.com/docs> |
+| `pgbeam-agent` | Agent skills, plugin and MCP manifests |
+| `pgbeam-conformance` | Policy conformance vectors |
 
 File issues and open pull requests on the repository that holds the code.
 
@@ -58,7 +64,7 @@ If you are planning something large, open an issue first and say what you have i
 
 ## Licensing
 
-Every repository here is Apache-2.0. By contributing you agree that your contribution is licensed under the same terms, as set out in section 5 of the licence. There is no separate contributor licence agreement to sign.
+Each repository carries its own licence: Apache-2.0 for PgBeam's SDKs and tooling, the Go libraries and peeksafe; MIT for `ai-gateway-proxy` and `vscode-ai-gateway`; ISC for `rollup-plugin-import-cdn` and for each client in `openapi`, as its `package.json` declares. By contributing you agree that your contribution is licensed under the licence of the repository you contribute to. There is no separate contributor licence agreement to sign.
 
 ## Getting help
 

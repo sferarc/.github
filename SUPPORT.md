@@ -1,8 +1,10 @@
 # Support
 
-Sferarc publishes one product, PgBeam, and a set of standalone Go libraries. Where to go depends on what you need rather than which repository you landed on.
+sferarc makes several products and a set of standalone libraries. Where to go depends on what you need rather than which repository you landed on.
 
-If you landed here from a library, the short answer is that its repository is the place: open an issue there. The rest of this page is about the product.
+If you landed here from a library or tool, the short answer is that its repository is the place: open an issue there.
+
+For Nuclom, Photocall and Aula, use the help and contact pages on each product's own site: [nuclom.com](https://nuclom.com), [photocall.sferadev.com](https://photocall.sferadev.com) and [aula.sferarc.com](https://aula.sferarc.com). Their code is not public, so an issue here cannot reach your account. The rest of this page covers PgBeam.
 
 ## Documentation and status
 

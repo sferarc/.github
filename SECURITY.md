@@ -1,6 +1,6 @@
 # Security Policy
 
-This policy covers everything Sferarc publishes: PgBeam, and the standalone Go libraries.
+This policy covers every public repository sferarc publishes: PgBeam and its SDKs and tooling, and the standalone libraries and tools.
 
 PgBeam sits between AI agents and production databases, so a flaw in it is a flaw in somebody's data boundary. Three of the libraries carry the same kind of weight in miniature. `promptscan` is a detection control, `auditchain` is an integrity control, and `pgscram` handles credential material. We would rather hear about any of it from you than from an incident.
 
@@ -11,7 +11,7 @@ Send the report to the address for what it affects:
 | What it affects      | Where to send it    |
 | -------------------- | ------------------- |
 | PgBeam               | security@pgbeam.com |
-| Any of the libraries | security@pgbeam.com |
+| Any other public repository | security@pgbeam.com |
 
 Both rows are the same mailbox today. The table has two rows because the routing is by what you found rather than by where you happened to find it, and because that stays true when the table grows.
 
@@ -50,7 +50,7 @@ Every public repository in this organization is in scope, as is every service an
 - The Terraform, Crossplane, and Pulumi providers.
 - The agent gateway and its policy enforcement: read-only mode, table and column allowlists, row filters, PII masking, query budgets, the kill-switch, and the audit log. A construct that gets past any of those is exactly the class of bug we most want.
 
-### Libraries
+### Libraries and tools
 
 Each one is a small package with a narrow job, so the interesting findings are narrow too:
 
@@ -58,6 +58,9 @@ Each one is a small package with a narrow job, so the interesting findings are n
 - `auditchain`: any tampering that still verifies, and any well formed chain that fails to verify when it should not. The published threat model is an adversary who can write to the log store but cannot reach the keys.
 - `pgscram`: a verifier PostgreSQL accepts that this rejects, or the reverse, and anything touching the derived key material.
 - `schemadigest`: disclosure of a table or column the caller was not meant to see.
+- `peeksafe`: a gate that reports a guarantee its statistics do not give, such as stopping early with a higher error rate than it promises.
+- `ai-gateway-proxy` and `vscode-ai-gateway`: anything that leaks or misroutes the AI Gateway key, or lets a request reach somewhere the caller did not configure.
+- `openapi` and `rollup-plugin-import-cdn`: generated or rewritten code that sends credentials or requests to a host other than the one configured.
 
 ### Out of scope, whatever the product
 
