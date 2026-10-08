@@ -10,7 +10,7 @@ sferarc builds Postgres tools for developers and a few products for everyone els
 | --- | --- | --- |
 | [PgBeam](https://pgbeam.com) | A Postgres proxy that gives AI agents scoped credentials and enforces policy in the wire protocol: read-only mode, table and column allowlists, row filters, PII masking, query budgets, a kill switch and a tamper-evident audit log. Works with any Postgres host. | Live |
 | pgseek | Full-text search inside Postgres, served from a native index with BM25 ranking. | In development |
-| [Nuclom](https://nuclom.com) | One knowledge hub over Slack, Notion, GitHub and meeting recordings that answers questions with sources. | Live |
+| [Nuclom](https://nuclom.com) | One knowledge hub over Slack, Notion, GitHub and meeting recordings that answers questions with sources. | Private beta |
 | [Photocall](https://photocall.sferadev.com) | A photo booth kiosk for weddings, parties and company events, with QR pickup and on-site printing. | Live |
 | [Aula](https://aula.sferarc.com) | A teaching site of their own for independent teachers and small schools. | Early access |
 | Seating | A seating planner for weddings and events. | Coming soon |
