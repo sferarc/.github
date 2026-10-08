@@ -26,6 +26,13 @@ jobs:
             echo "::error::Use a comma, colon, semicolon or two sentences instead of an em or en dash."
             exit 1
           fi
+      # GitHub silently drops a contact link whose url is not http(s), with no error anywhere.
+      - name: Contact links use https
+        run: |
+          if grep -nE '^\s*url:' .github/ISSUE_TEMPLATE/config.yml | grep -v 'https://'; then
+            echo "::error::Every contact_links url must start with https://."
+            exit 1
+          fi
 
   links:
     name: Links
